@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="col-lg-12 grid-margin stretch-card">
+  
+    <div class="card">
+      <div class="card-body">
+        
+        <a class="nav-link btn btn-success create-new-button" style="width: 30%;"  href="{% url 'ajouterProduit' %}">+ Ajouter un produit</a>
+        <br>
+        <h4 class="card-title">GESTION DES PRODUITS </h4>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> CODE </th>
+                <th>DESIGNATION</th>
+                <th>PRIX UNITAIRE</th>
+                <th>QUANTITE</th>
+                <th>PRIX TOTAL</th>
+                <th>CATEGORIE</th>
+                <th> ACTIONS </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            {% for p in pr %}
+              <tr>
+                <td class="py-1">  {{p.code}}</td>
+                <td>{{p.libelle}}</td>
+                <td class="py-1">  {{p.pu}}</td>
+                <td>{{p.qte}}</td>
+                <td>{{p.prtotal}}</td>
+                <td class="py-1">  {{p.categorie}}</td>
+                <td> 
+
+                    <a href="" onclick="return confirm('Etes-vous sûr de vouloir supprimer?')"> <i class="mdi mdi-delete"></i></a>
+                    <a href=""><i class="mdi mdi-table-edit"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
